@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Barbearia Vintage - Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>💈 Barbearia Vintage</h2>
+    <div class="card">
+      <input type="email" id="email" placeholder="E-mail" />
+      <input type="password" id="senha" placeholder="Senha" />
+      <p class="erro" id="erro" style="display: none"></p>
+      <button class="btn-primary" onclick="fazerLogin()">Entrar</button>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    async function fazerLogin() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const erroEl = document.getElementById("erro");
+      erroEl.style.display = "none";
+
+      try {
+        const resposta = await fetch(`${API_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+          erroEl.textContent = dados.erro || "Erro ao fazer login";
+          erroEl.style.display = "block";
+          return;
+        }
+
+        salvarToken(dados.token, dados.nome);
+        window.location.href = "clientes.html";
+      } catch (e) {
+        erroEl.textContent = "Não foi possível conectar ao servidor";
+        erroEl.style.display = "block";
+      }
+    }
+
+    // permite apertar Enter para logar
+    document.getElementById("senha").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") fazerLogin();
+    });
+  </script>
+</body>
+</html>

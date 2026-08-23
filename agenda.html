@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agenda - Barbearia Vintage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>💈 Barbearia Vintage</h1>
+    <nav>
+      <a href="clientes.html">Clientes</a>
+      <a href="agenda.html">Agenda</a>
+      <button onclick="logout()">Sair</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Novo agendamento</h2>
+      <div class="form-row">
+        <select id="cliente_id"></select>
+        <input type="text" id="servico" placeholder="Serviço (ex: Corte, Barba)" />
+      </div>
+      <div class="form-row">
+        <input type="date" id="data" />
+        <input type="time" id="horario" />
+      </div>
+      <p class="erro" id="erro" style="display: none"></p>
+      <button class="btn-primary" onclick="criarAgendamento()">Agendar</button>
+    </div>
+
+    <div class="card">
+      <h2>Agenda</h2>
+      <div class="filtros">
+        <label>Filtrar por data:</label>
+        <input type="date" id="filtro-data" onchange="carregarAgendamentos()" />
+        <button onclick="limparFiltro()">Ver todos</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-agenda"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="agenda.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, Arial, sans-serif;
+  background: #f4f1ec;
+  margin: 0;
+  color: #2b2b2b;
+}
+
+header {
+  background: #26211c;
+  color: #f4f1ec;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+header nav a {
+  color: #f4f1ec;
+  text-decoration: none;
+  margin-left: 16px;
+  font-size: 0.9rem;
+}
+
+header button {
+  background: transparent;
+  border: 1px solid #f4f1ec;
+  color: #f4f1ec;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+main {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.login-container {
+  max-width: 360px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 24px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background: #7a5c3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.btn-primary:hover {
+  background: #634a32;
+}
+
+.erro {
+  color: #b3261e;
+  font-size: 0.9rem;
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: #777;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.acoes button {
+  margin-right: 6px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-editar {
+  background: #e8dfd3;
+}
+
+.btn-remover {
+  background: #f3d4d1;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+.status-agendado {
+  background: #dbe9f4;
+  color: #1a5276;
+}
+
+.status-concluido {
+  background: #d4f0dc;
+  color: #1e6b3a;
+}
+
+.status-cancelado {
+  background: #f3d4d1;
+  color: #922b21;
+}
+
+.status-nao_compareceu {
+  background: #ece3d4;
+  color: #7d6608;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row > * {
+  flex: 1;
+}
+
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.filtros input,
+.filtros select {
+  margin-bottom: 0;
+  width: auto;
+}
