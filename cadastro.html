@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>THE GENTLEMEN'S CLUB 300</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <img src="logo.jpg" alt="The Gentlemen's Club 300 Barber Shop" class="logo logo-login" />
+    <div class="card">
+      <input type="text" id="nome" placeholder="Nome" />
+      <input type="email" id="email" placeholder="E-mail" />
+      <input type="password" id="senha" placeholder="Senha" />
+
+      <div class="campo-com-ajuda">
+        <input type="text" id="codigo_funcionario" placeholder="Código de funcionário" />
+        <button type="button" class="btn-ajuda" onclick="alternarAjuda()">?</button>
+      </div>
+      <p class="ajuda-texto" id="ajuda-texto" style="display: none">
+        Apenas funcionários da barbearia podem criar conta. Insira o código
+        fornecido pelo proprietário para confirmar seu vínculo com a barbearia.
+      </p>
+
+      <p class="erro" id="erro" style="display: none"></p>
+      <button class="btn-primary" onclick="fazerCadastro()">Criar conta</button>
+      <p class="link-secundario"><a href="index.html">Já tenho conta</a></p>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    function alternarAjuda() {
+      const ajudaEl = document.getElementById("ajuda-texto");
+      ajudaEl.style.display = ajudaEl.style.display === "none" ? "block" : "none";
+    }
+
+    async function fazerCadastro() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const codigo = document.getElementById("codigo_funcionario").value;
+      const erroEl = document.getElementById("erro");
+      erroEl.style.display = "none";
+
+      try {
+        const resposta = await fetch(`${API_URL}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome, email, senha, codigo }),
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+          erroEl.textContent = dados.erro || "Erro ao criar conta";
+          erroEl.style.display = "block";
+          return;
+        }
+
+        window.location.href = "index.html";
+      } catch (e) {
+        erroEl.textContent = "Não foi possível conectar ao servidor";
+        erroEl.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

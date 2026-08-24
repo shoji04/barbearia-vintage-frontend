@@ -2,15 +2,16 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Agenda - Barbearia Vintage</title>
+  <title>THE GENTLEMEN'S CLUB 300</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>💈 Barbearia Vintage</h1>
+    <img src="logo.jpg" alt="The Gentlemen's Club 300 Barber Shop" class="logo logo-header" />
     <nav>
       <a href="clientes.html">Clientes</a>
       <a href="agenda.html">Agenda</a>
+      <span id="saudacao-funcionario" class="saudacao"></span>
       <button onclick="logout()">Sair</button>
     </nav>
   </header>
@@ -55,5 +56,8 @@
 
   <script src="config.js"></script>
   <script src="agenda.js"></script>
+  <script>
+    mostrarSaudacaoFuncionario();
+  </script>
 </body>
 </html>

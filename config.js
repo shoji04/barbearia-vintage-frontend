@@ -1,5 +1,5 @@
 // Endereço onde o backend Flask está rodando
-const API_URL = "http://localhost:5000";
+const API_URL = "http://localhost:5001";
 
 // Funções auxiliares usadas em todas as páginas
 
@@ -22,6 +22,15 @@ function logout() {
 function exigirLogin() {
   if (!getToken()) {
     window.location.href = "index.html";
+  }
+}
+
+// Mostra "Olá, {nome}" no header, usando o nome salvo no login
+function mostrarSaudacaoFuncionario() {
+  const nome = localStorage.getItem("nome_funcionario");
+  const el = document.getElementById("saudacao-funcionario");
+  if (el && nome) {
+    el.textContent = `Olá, ${nome}`;
   }
 }
 
