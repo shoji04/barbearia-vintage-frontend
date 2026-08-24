@@ -60,28 +60,48 @@ function formatarData(isoData) {
 // Safari no iOS deixa date e time completamente em branco até serem tocados.
 // Preencher com a data e a hora atuais dá um ponto de partida visível (e é o
 // caso mais comum ao agendar); o tom suave indica que ainda é o valor padrão.
-function preencherDataHoraAtuais() {
+function dataHoraAtuais() {
   const agora = new Date();
   const dois = (n) => String(n).padStart(2, "0");
+
+  return {
+    data: `${agora.getFullYear()}-${dois(agora.getMonth() + 1)}-${dois(
+      agora.getDate()
+    )}`,
+    horario: `${dois(agora.getHours())}:${dois(agora.getMinutes())}`,
+  };
+}
+
+function marcarComoPadrao(el) {
+  el.classList.add("valor-padrao");
+  el.addEventListener("change", () => el.classList.remove("valor-padrao"), {
+    once: true,
+  });
+}
+
+function preencherDataHoraAtuais() {
+  const { data, horario } = dataHoraAtuais();
 
   const dataEl = document.getElementById("data");
   const horarioEl = document.getElementById("horario");
 
-  dataEl.value = `${agora.getFullYear()}-${dois(agora.getMonth() + 1)}-${dois(
-    agora.getDate()
-  )}`;
-  horarioEl.value = `${dois(agora.getHours())}:${dois(agora.getMinutes())}`;
+  dataEl.value = data;
+  horarioEl.value = horario;
 
-  [dataEl, horarioEl].forEach((el) => {
-    el.classList.add("valor-padrao");
-    el.addEventListener("change", () => el.classList.remove("valor-padrao"), {
-      once: true,
-    });
-  });
+  marcarComoPadrao(dataEl);
+  marcarComoPadrao(horarioEl);
+}
+
+function preencherFiltroDataAtual() {
+  const filtroEl = document.getElementById("filtro-data");
+  filtroEl.value = dataHoraAtuais().data;
+  marcarComoPadrao(filtroEl);
 }
 
 function limparFiltro() {
-  document.getElementById("filtro-data").value = "";
+  const filtroEl = document.getElementById("filtro-data");
+  filtroEl.value = "";
+  filtroEl.classList.remove("valor-padrao");
   carregarAgendamentos();
 }
 
@@ -140,5 +160,6 @@ async function removerAgendamento(id) {
 }
 
 preencherDataHoraAtuais();
+preencherFiltroDataAtual();
 carregarClientesNoSelect();
 carregarAgendamentos();

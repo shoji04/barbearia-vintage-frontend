@@ -767,6 +767,7 @@ tbody tr:last-child td {
   /* Data e Horário continuam lado a lado, mais compacto que empilhado */
   .form-row.form-row-data-horario {
     flex-direction: row;
+    gap: 16px;
   }
 
   /* Safari no iOS distorce/esconde o valor de date e time com fonte < 16px
