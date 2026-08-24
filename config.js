@@ -1,5 +1,5 @@
 // Endereço onde o backend Flask está rodando
-const API_URL = "http://localhost:5001";
+const API_URL = "https://barbearia-vintage-backend.onrender.com";
 
 // Funções auxiliares usadas em todas as páginas
 
