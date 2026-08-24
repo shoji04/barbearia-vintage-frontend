@@ -73,7 +73,7 @@ select:focus-visible {
 header {
   background: linear-gradient(180deg, #2e2822, var(--tinta));
   color: var(--creme);
-  padding: 14px 28px;
+  padding: 4px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,8 +91,8 @@ header {
 
 /* o logo é um brasão circular: recortamos em círculo e emolduramos em dourado */
 .logo-header {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 0 1px rgba(194, 161, 95, 0.55),
@@ -105,13 +105,19 @@ header {
 }
 
 .logo-login {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 26px;
   box-shadow: 0 0 0 1px rgba(122, 92, 62, 0.3),
     0 0 0 7px rgba(255, 255, 255, 0.55), 0 10px 30px rgba(38, 33, 28, 0.14);
+}
+
+.logo-escrita {
+  height: 94px;
+  width: auto;
+  object-fit: contain;
 }
 
 header nav {
@@ -639,16 +645,20 @@ tbody tr:last-child td {
 
 @media (max-width: 720px) {
   header {
-    padding: 12px 16px;
-    gap: 12px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 16px 12px;
+    gap: 8px;
   }
 
   header nav {
-    gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 4px;
   }
 
   header nav a {
-    padding: 8px;
+    padding: 8px 10px;
     font-size: 0.72rem;
   }
 
@@ -664,8 +674,22 @@ tbody tr:last-child td {
   }
 
   .logo-header {
-    height: 46px;
-    width: 46px;
+    height: 56px;
+    width: 56px;
+  }
+
+  .logo-escrita {
+    height: 54px;
+  }
+
+  .login-container {
+    margin: 36px auto;
+  }
+
+  .logo-login {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 18px;
   }
 
   main {
@@ -685,6 +709,31 @@ tbody tr:last-child td {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 380px) {
+  header nav a {
+    padding: 7px 8px;
+    font-size: 0.68rem;
+  }
+
+  header nav .saudacao {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    text-align: center;
+    order: 3;
+  }
+
+  header button {
+    margin-left: 8px;
+  }
+
+  .logo-login {
+    height: 110px;
+    width: 110px;
   }
 }
 
