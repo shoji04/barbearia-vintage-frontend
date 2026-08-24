@@ -34,6 +34,16 @@ function mostrarSaudacaoFuncionario() {
   }
 }
 
+// Destaca no menu o link da página que está aberta
+function marcarLinkAtivo() {
+  const paginaAtual = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll("header nav a").forEach((link) => {
+    if (link.getAttribute("href") === paginaAtual) {
+      link.classList.add("ativo");
+    }
+  });
+}
+
 // Wrapper do fetch que já manda o token de autenticação
 async function apiFetch(caminho, opcoes = {}) {
   const headers = {
