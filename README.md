@@ -3,6 +3,18 @@
 Frontend do sistema de gestão da barbearia **The Gentlemen's Club 300**, usado pelos funcionários para autenticação, cadastro de clientes e controle da agenda de atendimentos.
 
 🔗 **Deploy:** [https://thegentlemensclub300.vercel.app](https://thegentlemensclub300.vercel.app)
+🔗 **Repositório do backend:** [https://github.com/shoji04/barbearia-vintage-backend](https://github.com/shoji04/barbearia-vintage-backend)
+
+## Contexto do case
+
+A Barbearia Vintage é uma barbearia de bairro que até então controlava agendamentos manualmente em um caderno físico. Esse processo causava horários duplicados, esquecimentos e falta de visibilidade sobre quantos atendimentos foram realizados e quais serviços eram mais procurados.
+
+Este sistema resolve esses problemas com uma plataforma web de acesso restrito a funcionários, oferecendo:
+
+- Cadastro de clientes
+- Agendamentos organizados por data e horário, evitando conflitos de horário
+- Controle de status dos atendimentos
+- Automação via n8n que envia e-mail de confirmação ao cliente
 
 ## Tecnologias usadas
 
