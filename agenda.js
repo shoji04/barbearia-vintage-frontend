@@ -57,6 +57,29 @@ function formatarData(isoData) {
   return `${dia}/${mes}/${ano}`;
 }
 
+// Safari no iOS deixa date e time completamente em branco até serem tocados.
+// Preencher com a data e a hora atuais dá um ponto de partida visível (e é o
+// caso mais comum ao agendar); o tom suave indica que ainda é o valor padrão.
+function preencherDataHoraAtuais() {
+  const agora = new Date();
+  const dois = (n) => String(n).padStart(2, "0");
+
+  const dataEl = document.getElementById("data");
+  const horarioEl = document.getElementById("horario");
+
+  dataEl.value = `${agora.getFullYear()}-${dois(agora.getMonth() + 1)}-${dois(
+    agora.getDate()
+  )}`;
+  horarioEl.value = `${dois(agora.getHours())}:${dois(agora.getMinutes())}`;
+
+  [dataEl, horarioEl].forEach((el) => {
+    el.classList.add("valor-padrao");
+    el.addEventListener("change", () => el.classList.remove("valor-padrao"), {
+      once: true,
+    });
+  });
+}
+
 function limparFiltro() {
   document.getElementById("filtro-data").value = "";
   carregarAgendamentos();
@@ -91,8 +114,7 @@ async function criarAgendamento() {
   }
 
   document.getElementById("servico").value = "";
-  document.getElementById("data").value = "";
-  document.getElementById("horario").value = "";
+  preencherDataHoraAtuais();
   carregarAgendamentos();
 }
 
@@ -117,5 +139,6 @@ async function removerAgendamento(id) {
   carregarAgendamentos();
 }
 
+preencherDataHoraAtuais();
 carregarClientesNoSelect();
 carregarAgendamentos();

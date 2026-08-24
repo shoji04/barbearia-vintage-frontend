@@ -306,14 +306,22 @@ input::placeholder {
   color: #a89e91;
 }
 
-/* Safari no iOS dá a date e time uma altura nativa maior que a dos demais
-   campos. A altura explícita já resolve isso e deixa os três iguais (os
-   outros inputs dão ~50px), então não usamos appearance:none: ela deixava
-   o campo achatado e sem a aparência nativa de controle. */
+/* Safari no iOS impõe a date e time uma altura nativa bem maior que a dos
+   demais campos e só respeita height com appearance:none. Os 50px igualam
+   esses campos aos outros inputs (que dão ~50px com o padding padrão). */
 input[type="date"],
 input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
   height: 50px;
   line-height: 1.5;
+}
+
+/* data/hora atuais preenchidas por padrão: ficam em tom suave até o
+   funcionário escolher outro valor */
+input.valor-padrao,
+input.valor-padrao::-webkit-datetime-edit {
+  color: #a89e91;
 }
 
 input:hover,
@@ -352,6 +360,7 @@ select {
 .campo {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .campo label {
