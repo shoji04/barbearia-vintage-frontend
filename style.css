@@ -722,6 +722,22 @@ tbody tr:last-child td {
   .logo-escrita {
     height: 74px;
   }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row > * {
+    width: 100%;
+  }
+
+  /* Safari no iOS distorce/esconde o valor de date e time com fonte < 16px
+     e aplica zoom automático ao focar; min-height garante alvo de toque adequado */
+  input[type="date"],
+  input[type="time"] {
+    font-size: 16px;
+    min-height: 44px;
+  }
 }
 
 @media (max-width: 380px) {
