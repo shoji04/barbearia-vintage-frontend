@@ -25,8 +25,14 @@
         <input type="text" id="servico" placeholder="Serviço (ex: Corte, Barba)" />
       </div>
       <div class="form-row">
-        <input type="date" id="data" />
-        <input type="time" id="horario" />
+        <div class="campo">
+          <label for="data">Data</label>
+          <input type="date" id="data" />
+        </div>
+        <div class="campo">
+          <label for="horario">Horário</label>
+          <input type="time" id="horario" />
+        </div>
       </div>
       <p class="erro" id="erro" style="display: none"></p>
       <button class="btn-primary" onclick="criarAgendamento()">Agendar</button>

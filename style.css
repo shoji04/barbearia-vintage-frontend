@@ -339,6 +339,20 @@ select {
   min-width: 0;
 }
 
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 6px;
+}
+
 /* ==================== BOTÕES ==================== */
 
 button.btn-primary {
@@ -715,12 +729,12 @@ tbody tr:last-child td {
 /* celulares: logos maiores e mais legíveis, sem quebrar o header */
 @media (max-width: 600px) {
   .logo-login {
-    height: 170px;
-    width: 170px;
+    height: 212px;
+    width: 212px;
   }
 
   .logo-escrita {
-    height: 74px;
+    height: 92px;
   }
 
   .form-row {
@@ -737,6 +751,7 @@ tbody tr:last-child td {
   input[type="time"] {
     font-size: 16px;
     min-height: 44px;
+    padding: 8px 12px;
   }
 }
 
@@ -760,12 +775,12 @@ tbody tr:last-child td {
   }
 
   .logo-login {
-    height: 160px;
-    width: 160px;
+    height: 200px;
+    width: 200px;
   }
 
   .logo-escrita {
-    height: 66px;
+    height: 82px;
   }
 }
 
