@@ -306,6 +306,17 @@ input::placeholder {
   color: #a89e91;
 }
 
+/* Safari no iOS aplica sua própria altura/aparência nativa em date e time,
+   bem maior que a caixa definida em CSS; appearance:none + altura explícita
+   + border-box neutralizam isso */
+input[type="date"],
+input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  height: 44px;
+}
+
 input:hover,
 select:hover {
   border-color: #c9bda9;
@@ -745,12 +756,16 @@ tbody tr:last-child td {
     width: 100%;
   }
 
+  /* Data e Horário continuam lado a lado, mais compacto que empilhado */
+  .form-row.form-row-data-horario {
+    flex-direction: row;
+  }
+
   /* Safari no iOS distorce/esconde o valor de date e time com fonte < 16px
-     e aplica zoom automático ao focar; min-height garante alvo de toque adequado */
+     e aplica zoom automático ao focar */
   input[type="date"],
   input[type="time"] {
     font-size: 16px;
-    min-height: 44px;
     padding: 8px 12px;
   }
 }
