@@ -306,15 +306,14 @@ input::placeholder {
   color: #a89e91;
 }
 
-/* Safari no iOS aplica sua própria altura/aparência nativa em date e time,
-   bem maior que a caixa definida em CSS; appearance:none + altura explícita
-   + border-box neutralizam isso */
+/* Safari no iOS dá a date e time uma altura nativa maior que a dos demais
+   campos. A altura explícita já resolve isso e deixa os três iguais (os
+   outros inputs dão ~50px), então não usamos appearance:none: ela deixava
+   o campo achatado e sem a aparência nativa de controle. */
 input[type="date"],
 input[type="time"] {
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  height: 44px;
+  height: 50px;
+  line-height: 1.5;
 }
 
 input:hover,
@@ -766,7 +765,13 @@ tbody tr:last-child td {
   input[type="date"],
   input[type="time"] {
     font-size: 16px;
-    padding: 8px 12px;
+  }
+
+  /* sem isso o campo do filtro fica um sliver: width:auto + campo vazio
+     deixa a largura intrínseca perto de zero no celular */
+  .filtros input[type="date"] {
+    flex: 1;
+    min-width: 140px;
   }
 }
 
