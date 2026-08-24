@@ -46,13 +46,27 @@ function marcarLinkAtivo() {
 
 // Wrapper do fetch que já manda o token de autenticação
 async function apiFetch(caminho, opcoes = {}) {
+  if (!getToken()) {
+    // sem token não há requisição a fazer - evita mandar "Bearer null" pro backend
+    logout();
+    return null;
+  }
+
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${getToken()}`,
     ...opcoes.headers,
   };
 
-  const resposta = await fetch(`${API_URL}${caminho}`, { ...opcoes, headers });
+  let resposta;
+  try {
+    resposta = await fetch(`${API_URL}${caminho}`, { ...opcoes, headers });
+  } catch (e) {
+    // falha de rede (backend fora do ar, sem internet, etc.) - sem isso a
+    // exceção ficava sem tratamento e a página travava sem avisar o usuário
+    alert("Não foi possível conectar ao servidor.");
+    return null;
+  }
 
   if (resposta.status === 401) {
     // token inválido ou expirado - manda de volta pro login

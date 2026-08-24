@@ -4,7 +4,7 @@ let editandoId = null;
 
 async function carregarClientes() {
   const resposta = await apiFetch("/clientes");
-  if (!resposta) return;
+  if (!resposta || !resposta.ok) return;
 
   const clientes = await resposta.json();
   const tbody = document.getElementById("tabela-clientes");

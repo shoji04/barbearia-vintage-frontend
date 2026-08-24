@@ -38,10 +38,10 @@
     }
 
     async function fazerCadastro() {
-      const nome = document.getElementById("nome").value;
-      const email = document.getElementById("email").value;
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
       const senha = document.getElementById("senha").value;
-      const codigo = document.getElementById("codigo_funcionario").value;
+      const codigo = document.getElementById("codigo_funcionario").value.trim();
       const erroEl = document.getElementById("erro");
       erroEl.style.display = "none";
 

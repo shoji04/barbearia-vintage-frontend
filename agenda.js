@@ -9,7 +9,7 @@ const STATUS_LABEL = {
 
 async function carregarClientesNoSelect() {
   const resposta = await apiFetch("/clientes");
-  if (!resposta) return;
+  if (!resposta || !resposta.ok) return;
 
   const clientes = await resposta.json();
   const select = document.getElementById("cliente_id");
@@ -23,7 +23,7 @@ async function carregarAgendamentos() {
   const caminho = filtroData ? `/agendamentos?data=${filtroData}` : "/agendamentos";
 
   const resposta = await apiFetch(caminho);
-  if (!resposta) return;
+  if (!resposta || !resposta.ok) return;
 
   const agendamentos = await resposta.json();
   const tbody = document.getElementById("tabela-agenda");
